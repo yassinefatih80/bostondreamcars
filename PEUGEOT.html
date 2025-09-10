@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boston Dream - Location de Voitures</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" rel="stylesheet">
+    <style>
+         :root {
+            --gold: #C6A96C;
+            --dark: #1A1A1A;
+            --light: #F8F8F8;
+            --gray: #777777;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+        }
+        
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Header Styles */
+        
+        header {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-img {
+            height: 60px;
+            width: auto;
+            background: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 15px;
+            border-radius: 4px;
+            color: var(--dark);
+            font-weight: 700;
+            font-size: 20px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--gold);
+        }
+        /* Hero Section */
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/HOME/COVER.jpg') no-repeat center center/cover;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--light);
+        }
+        
+        .hero-content {
+            max-width: 9000px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--dark);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #b8975a;
+            transform: translateY(-2px);
+        }
+        /* Brands Section */
+        
+        .brands {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--gold);
+            margin: 15px auto;
+        }
+        
+        .brand-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .brand-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .brand-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .brand-card img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+        }
+        
+        .brand-card-content {
+            padding: 20px;
+        }
+        
+        .brand-card h3 {
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        /* Cars Section */
+        
+        .cars {
+            padding: 80px 0;
+            background-color: #f2f2f2;
+        }
+        
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(365px, 1fr));
+            gap: 30px;
+        }
+        
+        .car-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .car-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .car-card img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+        }
+        
+        .car-card-content {
+            padding: 20px;
+        }
+        
+        .car-card h3 {
+            margin-bottom: 10px;
+        }
+        
+        .car-price {
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin: 8px 0;
+        }
+        
+        .car-features {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        /* Contact Section */
+        
+        .contact {
+            padding: 80px 0;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        /* Footer */
+        
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--gold);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            color: var(--light);
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--gold);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        /* Reservation Form */
+        
+        .reservation-form {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        /* Responsive Design */
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            nav ul {
+                margin-top: 20px;
+            }
+            nav ul li {
+                margin: 0 10px;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="img/Home/LOGO.jpg" alt="Boston" width="270">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="HOME.html">Accueil</a></li>
+                    <li><a href="HOME.html#brands">Notre Flotte</a></li>
+                    <li><a href="#contact">Contactez-nous</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Peugeot Cars Section -->
+    <section class="cars" id="Peugeot">
+        <div class="container">
+            <h2 class="section-title">Peugeot</h2>
+
+            <div class="car-grid">
+                <!-- Peugeot 2025  -->
+                <div class="car-card">
+                    <img src="img/Cars/PEUGEOT/208.PNG" alt="Peugeot 208 2025 ">
+                    <div class="car-card-content">
+                        <h3>Peugeot 208</h3>
+                        <div class="car-price">300 DHS</div>
+                        <div class="car-features">
+                            <span><i class="fas fa-palette"></i> Toutes les couleurs</span>
+                            <span><i class="fas fa-circle"></i> Petite</span>
+                            <span><i class="fas fa-about"></i> 2025</span>
+                        </div>
+                        <button class="btn reserve-btn">Réserver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contactez-nous</h2>
+
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h3>Téléphone</h3>
+                            <p>+212 661-794715</p>
+                            <p>+212 661-422289</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>boston.dream10@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Adresse</h3>
+                            <p>10 RUE OUARZAZAT HASSAN, Rabat</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="map">
+                    <iframe src="https://www.google.com/maps?q=10+RUE+OUARZAZAT+HASSAN,+Rabat&output=embed" width="100%" height="300" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <img src="img/Home/LOGO.jpg" alt="Boston" width="270">
+                    <p>Explorez le monde du luxe avec nous.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Liens rapides</h3>
+                    <ul>
+                        <li><a href="HOME.html">Accueil</a></li>
+                        <li><a href="HOME.html#brands">Notre Flotte</a></li>
+                        <li><a href="#contact">Contactez-nous</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h3>Contactez-nous</h3>
+                    <p>+212 661-794715</p>
+                    <p>+212 661-422289</p>
+                    <p>boston.dream10@gmail.com</p>
+                    <p>10 RUE OUARZAZAT HASSAN, Rabat</p>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 Boston Dream. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Reservation Modal -->
+    <div class="modal" id="reservation-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 1000; overflow-y: auto;">
+        <div class="modal-content" style="background: white; margin: 50px auto; padding: 30px; border-radius: 8px; max-width: 600px;">
+            <h2 style="margin-bottom: 20px;">Formulaire de Réservation</h2>
+            <form id="reservation-form">
+                <div class="form-group">
+                    <label for="pickup-date">Date de prise en charge</label>
+                    <input type="date" id="pickup-date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="return-date">Date de retour</label>
+                    <input type="date" id="return-date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="last-name">Nom</label>
+                    <input type="text" id="last-name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="first-name">Prénom</label>
+                    <input type="text" id="first-name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="birthdate">Date de naissance</label>
+                    <input type="date" id="birthdate" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="nationality">Nationalité</label>
+                    <select id="nationality" required>
+                    <option value="select">Séléctionner votre Nationalité</option>
+                    <option value="afghan">Afghane</option>
+                    <option value="sud-africain">Sud-africaine</option>
+                    <option value="albanais">Albanaise</option>
+<option value="algérien">Algérienne</option>
+<option value="allemand">Allemande</option>
+<option value="andorran">Andorrane</option>
+<option value="angolais">Angolaise</option>
+<option value="antiguais">Antiguaise</option>
+<option value="saoudien">Saoudienne</option>
+<option value="argentin">Argentine</option>
+<option value="arménien">Arménienne</option>
+<option value="australien">Australienne</option>
+<option value="autrichien">Autrichienne</option>
+<option value="azerbaïdjanais">Azerbaïdjanaise</option>
+<option value="bahaméen">Bahaméenne</option>
+<option value="bahreïni">Bahreïnienne</option>
+<option value="bangladais">Bangladaise</option>
+<option value="barbadien">Barbadienne</option>
+<option value="belge">Belge</option>
+<option value="bélizien">Bélizienne</option>
+<option value="béninois">Béninoise</option>
+<option value="bhoutanais">Bhoutanaise</option>
+<option value="bolivien">Bolivienne</option>
+<option value="bosnien">Bosnienne</option>
+<option value="botswanais">Botswanaise</option>
+<option value="brésilien">Brésilienne</option>
+<option value="britannique">Britannique</option>
+<option value="brunéien">Brunéienne</option>
+<option value="bulgare">Bulgare</option>
+<option value="burkinabé">Burkinabé</option>
+<option value="birman">Birmane</option>
+<option value="burundais">Burundaise</option>
+<option value="cambodgien">Cambodgienne</option>
+<option value="camerounais">Camerounaise</option>
+<option value="canadien">Canadienne</option>
+<option value="cap-verdien">Cap-verdienne</option>
+<option value="centrafricain">Centrafricaine</option>
+<option value="tchadien">Tchadienne</option>
+<option value="chilien">Chilienne</option>
+<option value="chinois">Chinoise</option>
+<option value="colombien">Colombienne</option>
+<option value="comorien">Comorienne</option>
+<option value="congolais">Congolaise</option>
+<option value="costaricien">Costaricienne</option>
+<option value="croate">Croate</option>
+<option value="cubain">Cubaine</option>
+<option value="chypriote">Chypriote</option>
+<option value="tchèque">Tchèque</option>
+<option value="danois">Danoise</option>
+<option value="djiboutien">Djiboutienne</option>
+<option value="dominicain">Dominicaine</option>
+<option value="néerlandais">Néerlandaise</option>
+<option value="émirati">Émiratie</option>
+<option value="équatorien">Équatorienne</option>
+<option value="égyptien">Égyptienne</option>
+<option value="équato-guinéen">Équato-guinéenne</option>
+<option value="érythréen">Érythréenne</option>
+<option value="estonien">Estonienne</option>
+<option value="éthiopien">Éthiopienne</option>
+<option value="fidjien">Fidjienne</option>
+<option value="philippin">Philippine</option>
+<option value="finlandais">Finlandaise</option>
+<option value="français">Française</option>
+<option value="gabonais">Gabonaise</option>
+<option value="gambien">Gambienne</option>
+<option value="géorgien">Géorgienne</option>
+<option value="ghanéen">Ghanéenne</option>
+<option value="grec">Grecque</option>
+<option value="grenadien">Grenadienne</option>
+<option value="guatémaltèque">Guatémaltèque</option>
+<option value="guinéen">Guinéenne</option>
+<option value="bissau-guinéen">Bissau-guinéenne</option>
+<option value="guyanien">Guyanaise</option>
+<option value="haïtien">Haïtienne</option>
+<option value="hondurien">Hondurienne</option>
+<option value="hongrois">Hongroise</option>
+<option value="islandais">Islandaise</option>
+<option value="indien">Indienne</option>
+<option value="indonésien">Indonésienne</option>
+<option value="iranien">Iranienne</option>
+<option value="irakien">Irakienne</option>
+<option value="irlandais">Irlandaise</option>
+<option value="israélien">Israélienne</option>
+<option value="italien">Italienne</option>
+<option value="ivoirien">Ivoirienne</option>
+<option value="jamaïcain">Jamaïcaine</option>
+<option value="japonais">Japonaise</option>
+<option value="jordanien">Jordanienne</option>
+<option value="kazakh">Kazakhstanaise</option>
+<option value="kényan">Kényane</option>
+<option value="kirghize">Kirghize</option>
+<option value="kiribatien">Kiribatienne</option>
+<option value="koweïtien">Koweïtienne</option>
+<option value="laotien">Laotienne</option>
+<option value="letton">Lettone</option>
+<option value="libanais">Libanaise</option>
+<option value="libérien">Libérienne</option>
+<option value="libyen">Libyenne</option>
+<option value="liechtensteinois">Liechtensteinoise</option>
+<option value="lituanien">Lituanienne</option>
+<option value="luxembourgeois">Luxembourgeoise</option>
+<option value="macédonien">Macédonienne</option>
+<option value="malgache">Malgache</option>
+<option value="malawien">Malawienne</option>
+<option value="malaisien">Malaisienne</option>
+<option value="maldivien">Maldivienne</option>
+<option value="malien">Malienne</option>
+<option value="maltais">Maltaise</option>
+<option value="marocain">Marocaine</option>
+<option value="marshallais">Marshallaise</option>
+<option value="mauritanien">Mauritanienne</option>
+<option value="mauricien">Mauricienne</option>
+<option value="mexicain">Mexicaine</option>
+<option value="micronésien">Micronésienne</option>
+<option value="moldave">Moldave</option>
+<option value="monégasque">Monégasque</option>
+<option value="mongol">Mongole</option>
+<option value="monténégrin">Monténégrine</option>
+<option value="mozambicain">Mozambicaine</option>
+<option value="namibien">Namibienne</option>
+<option value="nauruan">Nauruane</option>
+<option value="népalais">Népalaise</option>
+<option value="néo-zélandais">Néo-zélandaise</option>
+<option value="nicaraguayen">Nicaraguayenne</option>
+<option value="nigérien">Nigérienne</option>
+<option value="nigérian">Nigériane</option>
+<option value="nord-coréen">Nord-coréenne</option>
+<option value="norvégien">Norvégienne</option>
+<option value="omanais">Omanaise</option>
+<option value="pakistanais">Pakistanaise</option>
+<option value="palestinien">Palestinienne</option>
+<option value="panaméen">Panaméenne</option>
+<option value="papou-néo-guinéen">Papouane-néo-guinéenne</option>
+<option value="paraguayen">Paraguayenne</option>
+<option value="péruvien">Péruvienne</option>
+<option value="polonais">Polonaise</option>
+<option value="portugais">Portugaise</option>
+<option value="qatari">Qatarienne</option>
+<option value="roumain">Roumaine</option>
+<option value="russe">Russe</option>
+<option value="rwandais">Rwandaise</option>
+<option value="saint-lucien">Saint-Lucienne</option>
+<option value="salvadorien">Salvadorienne</option>
+<option value="samoan">Samoane</option>
+<option value="saint-marinais">Saint-Marinaise</option>
+<option value="santoméen">Santoméenne</option>
+<option value="sénégalais">Sénégalaise</option>
+<option value="serbe">Serbe</option>
+<option value="seychellois">Seychelloise</option>
+<option value="sierra-léonais">Sierra-léonaise</option>
+<option value="singapourien">Singapourienne</option>
+<option value="slovaque">Slovaque</option>
+<option value="slovène">Slovène</option>
+<option value="salomonien">Salomonienne</option>
+<option value="somalien">Somalienne</option>
+<option value="sud-coréen">Sud-coréenne</option>
+<option value="espagnol">Espagnole</option>
+<option value="sri-lankais">Sri-lankaise</option>
+<option value="soudanais">Soudanaise</option>
+<option value="surinamais">Surinamaise</option>
+<option value="swazi">Swazie</option>
+<option value="suédois">Suédoise</option>
+<option value="suisse">Suisse</option>
+<option value="syrien">Syrienne</option>
+<option value="tadjik">Tadjike</option>
+<option value="tanzanien">Tanzanienne</option>
+<option value="thaïlandais">Thaïlandaise</option>
+<option value="togolais">Togolaise</option>
+<option value="tongien">Tonguienne</option>
+<option value="trinidadien">Trinidadienne</option>
+<option value="tunisien">Tunisienne</option>
+<option value="turc">Turque</option>
+<option value="turkmène">Turkmène</option>
+<option value="tuvaluan">Tuvaluane</option>
+<option value="ougandais">Ougandaise</option>
+<option value="ukrainien">Ukrainienne</option>
+<option value="uruguayen">Uruguayenne</option>
+<option value="ouzbek">Ouzbèke</option>
+<option value="vanuatuan">Vanuatuane</option>
+<option value="vatican">Vaticane</option>
+<option value="vénézuélien">Vénézuélienne</option>
+<option value="vietnamien">Vietnamienne</option>
+<option value="yéménite">Yéménite</option>
+<option value="zambien">Zambienne</option>
+<option value="zimbabwéen">Zimbabwéenne</option>
+<option value="américain">Américaine</option>
+
+                        <!-- More options would be added in a real implementation -->
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="passport">Numéro de passeport</label>
+                    <input type="text" id="passport" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="license">Numéro de permis de conduire</label>
+                    <input type="text" id="license" required>
+                </div>
+
+                <button type="submit" class="btn">Confirmer la réservation</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Simple reservation button functionality
+        document.querySelectorAll('.reserve-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                document.getElementById('reservation-modal').style.display = 'block';
+            });
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === document.getElementById('reservation-modal')) {
+                document.getElementById('reservation-modal').style.display = 'none';
+            }
+        });
+
+        // Form submission
+        document.getElementById('reservation-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Merci pour votre réservation ! Nous vous contacterons prochainement pour confirmer votre réservation.');
+            document.getElementById('reservation-modal').style.display = 'none';
+            // In a real implementation, this would send the form data to the server
+        });
+    </script>
+</body>
+
+</html>
